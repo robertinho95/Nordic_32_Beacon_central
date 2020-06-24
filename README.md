@@ -1,2 +1,2 @@
-# Nordic_32_Beacon_central
-Continuous scan for beacon and decode the payload driving four GPIO a output
+# proximityBeacon_BLE
+Nordic based project to trigger vibration when two or more devices are in a certain range
