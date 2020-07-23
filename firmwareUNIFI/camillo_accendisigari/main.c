@@ -32,7 +32,6 @@
 // GPIO Definition
 #define CONNECTIVITY_LED                NRF_GPIO_PIN_MAP(0,12)
 #define MAIN_LED                        NRF_GPIO_PIN_MAP(0,8)
-#define DEBUG_LED                       NRF_GPIO_PIN_MAP(1,9)
 #define BUZZ                            NRF_GPIO_PIN_MAP(0,10)
 #define BUTTON_CLI                      NRF_GPIO_PIN_MAP(1,6) 
 
@@ -210,8 +209,6 @@ static void leds_init(void)
     nrf_gpio_pin_write(MAIN_LED, 1);
     nrf_gpio_cfg_output(CONNECTIVITY_LED);
     nrf_gpio_pin_write(CONNECTIVITY_LED, 1);
-    nrf_gpio_cfg_output(DEBUG_LED);
-    nrf_gpio_pin_write(DEBUG_LED, 1);
     nrf_gpio_cfg_output(BUZZ);
     nrf_gpio_pin_write(BUZZ, 1);
     
@@ -501,10 +498,10 @@ static void scan_init(void)
     err_code = nrf_ble_scan_init(&m_scan, &init_scan, scan_evt_handler);
     APP_ERROR_CHECK(err_code);
 
-        err_code = nrf_ble_scan_filter_set(&m_scan,
+    err_code = nrf_ble_scan_filter_set(&m_scan,
                                            SCAN_NAME_FILTER,
                                            m_target_periph_name);
-        APP_ERROR_CHECK(err_code);
+    APP_ERROR_CHECK(err_code);
 
 //    if (is_connect_per_addr)
 //    {
@@ -566,3 +563,4 @@ int main(void)
         idle_state_handle();
     }
 }
+
